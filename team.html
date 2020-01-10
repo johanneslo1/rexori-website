@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<html lang=de>
+<title>Team | BullzNET</title>
+<meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name=keywords content="team, teammitglieder, serverteam">
+<meta name=description content>
+<link rel="shortcut icon" href=assets/img/icon.png>
+<link rel=stylesheet type=text/css href=assets/css/style.css />
+<link rel=stylesheet type=text/css href=assets/css/bootstrap.css />
+<link rel=stylesheet type=text/css href=assets/css/font-awesome.min.css />
+</head>
+<body id=up>
+<div id=preloader>
+<div id=status>
+<div class=uil-ring-css style=transform:scale(0.58)><div></div></div>
+</div>
+</div>
+<nav class="navbar navbar-inverse navbar-fixed-top text-center">
+<div class=container-fluid>
+<div class=navbar-header>
+<button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar aria-expanded=false>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<!--
+<a class=navbar-brand href=#>
+<img id=nav-logo src=assets/img/logo.png style="width: 175px;">
+</a>
+-->
+</div>
+<div class="collapse navbar-collapse underline" id=navbar>
+<ul class="nav navbar-nav">
+<li>
+<a target=_blank href=http://bullz.net/forum><i class="fa fa-globe" aria-hidden=true></i>&nbsp;&nbsp;Forum</a>
+</li>
+<li>
+<a href=statistics.html><i class="fa fa-pie-chart" aria-hidden=true></i>&nbsp;&nbsp;Statistiken</a>
+</li>
+<li class=active>
+<a href=team.html><i class="fa fa-users" aria-hidden=true></i>&nbsp;&nbsp;Team</a>
+</li>
+<li>
+<a href=partners.html><i class="fa fa-heart" aria-hidden=true></i>&nbsp;&nbsp;Partner</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="hero-small text-center" id=particles-js>
+<div class=header>
+<h2 class=uppercase>Unser Team</h2>
+<p>
+➥ Unser Team besteht aus <b><span class=highlight id=countedTeam></span></b> fleißigen und freundlichen Team-Mitglieder.
+</p>
+</div>
+</div>
+<section class=statistics>
+<div class=container>
+<div class=card>
+<div class=row>
+<div class="col-md-12 text-center">
+<h2>Wir suchen Team-Mitglieder!</h2>
+<p class=sub-heading>
+Hier kannst du unser Server-Team betrachten. Doch wenn du denkst, dass du eine gute Erweiterung für unser Team bist, kannst du dich im <a href=http://bullz.net/forum>Forum</a> bewerben.
+</p>
+<a type=button class="btn btn-primary" href=http://bullz.net/forum>JETZT BEWERBEN!</a>
+</div>
+</div>
+<div class=row id=team>
+</div>
+<div class=row>
+<div class="col-md-12 text-center">
+<p class=errorMessage id=errorMessage></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id=footer>
+<div class=container>
+<div class=row>
+  <div class="col-md-4 col-sm-6 col-md-xs-12 paddingtop-bottom">
+  <h4><i class="fa fa-location-arrow"></i>&nbsp;&nbsp;QUICK NAVIGATION</h4>
+  <ul class=footer-ul>
+  <li><a href=index.html> Startseite</a></li>
+  <li><a target=_blank href=http://bullz.net/forum> Forum</a></li>
+  <li><a href=statistics.html> Statistiken</a></li>
+  <li><a href=team.html> Team</a></li>
+  <li><a href=partners.html> Partner</a></li>
+  <li><a href=impressum.php> Impressum</a></li>
+  <li><a href=datenschutzerklärung.php> Datenschutzerklärung</a></li>
+  </ul>
+  </div>
+  <div class="col-md-6 col-sm-6 col-md-xs-12 col-md-offset-2">
+  <h4 class=text-center>➥ Aktuelle Tweets von <a href=https://twitter.com/BullzNET>@BullzNET</a></h4>
+  <a class=twitter-timeline data-theme=dark data-height=290 data-chrome="nofooter noheader transparent noborders noscrollbar" data-dnt=true href=https://twitter.com/BullzNET>Tweets by BullzNET</a>
+  </div>
+
+</div>
+</div>
+</section>
+<div class=copyright>
+<div class=container>
+<div class=col-md-6>
+<p>Copyright © 2017 Bullz.net - Website developed by <a href=https://technikclou.com>Johannes Lohmann</a></p>
+</div>
+<div class=col-md-6>
+<p style=float:right>
+<a data-scroll href=#up>Ab nach oben <i class="fa fa-arrow-up" aria-hidden=true></i></a>
+</p>
+</div>
+</div>
+</div>
+</body>
+<script src=https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js></script>
+<script src=assets/js/bootstrap.min.js></script>
+<script src=assets/js/particles.min.js></script>
+<script src=assets/js/smooth-scroll.min.js></script>
+<script src=assets/js/wow.min.js></script>
+<script src=https://platform.twitter.com/widgets.js></script>
+<script>
+$(document).ready(function(){
+    $.getJSON("https://api.rexori.technikclou.com/api/v1/team", function(result) {
+        if (result && result.status) {
+            var echo = "";
+            var key;
+            for (key in result.data) {
+                echo = echo + '<div class="clearfix"></div><h2>' + key + '</h2>';
+                for (var i = 0; i < result.data[key].length; i++) {
+                    echo = echo + `<div class="col-md-4 col-sm-6 text-center"><div class="panel panel-default"><div class="panel-heading"><a href="statistics.html#` + result.data[key][i].name + `"><img src="https://visage.surgeplay.com/bust/200/` + result.data[key][i].uuid + `"/><h3><span style="color: ` + result.data[key][i].rank.color + `">` + result.data[key][i].name + `</span></h3></a></div><div class="panel-body text-center"><h5> <label class="label label-default"style="background-color: ` + result.data[key][i].rank.color + `;">` + result.data[key][i].rank.name + `</label> <label rel="tooltip" title="` + (result.data[key][i].ts3.currentChannel ? 'Channel: ' + result.data[key][i].ts3.currentChannel : '') + `" class="label"style="background-color: ` + (result.data[key][i].ts3.status ? `#5cb85c` : `#b00000`) + `;">` + (result.data[key][i].ts3.status ? `Online` : `Offline`) + ` auf TeamSpeak</label><br /><label class="label label-default">` + (result.data[key][i].cookies ? result.data[key][i].cookies : `0`) + ` Cookies</label> <label class="label label-default">` + (result.data[key][i].friends.countedFriends ? result.data[key][i].friends.countedFriends : '0') + ` Freund` + (result.data[key][i].friends.countedFriends == 1 ? '' : 'e') + `</label></h5></div></div></div>`;
+                }
+            }
+            $('#team').html(echo);
+        } else {}
+    });
+    $.getJSON("https://api.rexori.technikclou.com/api/v1/global-stats/global", function(d) {
+        d.status ? ($("#countedTeam").text(d.data.countedTeam)) : $("#errorMessage").text("Das Team konnte nicht vollständig angezeigt werden!")
+    }), $.getJSON("https://api.rexori.technikclou.com/api/v1/addView"), new WOW().init();
+
+    function checkScroll() {
+        var b = 2 * $(".navbar").height();
+        $(window).scrollTop() > b ? (
+          $(".navbar").removeClass("navbar-transparent"),
+          $("#navbar").removeClass("underline"),
+          $("#nav-logo").addClass("animated fadeInDown"),
+          $("#nav-logo").removeClass("fadeOutUp")
+        ) : (
+          $(".navbar").addClass("navbar-transparent"),
+          $("#navbar").addClass("underline"),
+          $("#nav-logo").addClass("animated fadeOutUp"),
+          $("#nav-logo").removeClass("fadeInDown")
+        )
+    }
+
+
+    smoothScroll.init({
+        speed: 2000
+    }), particlesJS.load("particles-js", "assets/particles.json", function() {
+
+    }), $(".navbar").length > 0 && $(window).on("scroll load resize", function(){
+        checkScroll()
+    }), $(".navbar-collapse").on("shown.bs.collapse", function() {
+        $(".hero").addClass("blur")
+    }), $(".navbar-collapse").on("hidden.bs.collapse", function() {
+        $(".hero").removeClass("blur")
+    });
+
+});
+$(window).on("load", function() {
+    $("#status").fadeOut(), $("#preloader").delay(350).fadeOut("slow"), $("body").delay(350).css({overflow: "visible"}),
+    $(".navbar").delay(350).css({visibility: "visible"}),
+    $('body').tooltip({selector: '[rel=tooltip]'});
+})
+</script>
+</html>
+

@@ -1,0 +1,398 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<html lang=de>
+<title>Statistiken | BullzNET</title>
+<meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name=keywords content>
+<meta name=description content>
+<link rel="shortcut icon" href=assets/img/icon.png>
+<link rel=stylesheet type=text/css href=assets/css/style.css />
+<link rel=stylesheet type=text/css href=assets/css/bootstrap.css />
+<link rel=stylesheet type=text/css href=assets/css/font-awesome.min.css />
+</head>
+<body id=up>
+<div id=preloader>
+<div id=status>
+<div class=uil-ring-css style=transform:scale(0.58)><div></div></div>
+</div>
+</div>
+<nav class="navbar navbar-inverse navbar-fixed-top text-center">
+<div class=container-fluid>
+<div class=navbar-header>
+<button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar aria-expanded=false>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<!--
+<a class=navbar-brand href=#>
+<img id=nav-logo src=assets/img/logo.png style="width: 175px;">
+</a>
+-->
+</div>
+<div class="collapse navbar-collapse underline" id=navbar>
+<ul class="nav navbar-nav">
+<li>
+<a target=_blank href=http://bullz.net/forum><i class="fa fa-globe" aria-hidden=true></i>&nbsp;&nbsp;Forum</a>
+</li>
+<li class=active>
+<a href=statistics.html><i class="fa fa-pie-chart" aria-hidden=true></i>&nbsp;&nbsp;Statistiken</a>
+</li>
+<li>
+<a href=team.html><i class="fa fa-users" aria-hidden=true></i>&nbsp;&nbsp;Team</a>
+</li>
+<li>
+<a href=partners.html><i class="fa fa-heart" aria-hidden=true></i>&nbsp;&nbsp;Partner</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="hero-small text-center" id=particles-js>
+<div class=header>
+<h2 class=uppercase>STATISTIKEN</h2>
+<p>
+➥ Schau dir die besten Spieler unserer Spielmodie an.
+</p>
+
+</div>
+</div>
+<section class=statistics>
+<div class=container>
+<div class=card>
+<div class=row>
+<div class="col-lg-8 col-md-6">
+<div id=title>
+<h2 class=uppercase><i class="fa fa-pie-chart"></i>&nbsp;&nbsp;STATISTIKEN</h2>
+</div>
+<p class=errorMessage id=errorMessage></p>
+</div>
+<div class="col-lg-4 col-md-6">
+<div class=col-md-12 id=search-form>
+<div class="input-group input-group-lg">
+<input style="border-radius: 5px 0px 0px 5px;" type=text class="form-control input-lg" id=player-input placeholder=Spielername>
+<span class=input-group-btn>
+<button style="border-radius: 0px 5px 5px 0px;" id=player-search-button class="btn-form btn-primary" type=button><i class="fa fa-search"></i></button>
+</span>
+</div>
+</div>
+<br />
+</div>
+</div>
+<div class=row style=display:none style="padding-top: 30px;" id=player-stats>
+</div>
+<div id=title2 style=display:none;padding-top:50px class=row>
+<div class=col-md-12>
+<h2 class=uppercase><i class="fa fa-pie-chart"></i>&nbsp;&nbsp;STATISTIKEN</h2>
+</div>
+</div>
+<div class=row style=padding-top:30px>
+<div class=col-md-4>
+<div class="panel panel-primary">
+<div class="panel-heading uppercase"><i class="fa fa-user-plus fa-2x"></i>&nbsp;&nbsp;&nbsp;&nbsp;Unsere registrierten Spieler:</div>
+<div class="panel-body text-center">
+<h3 id=countedUsers><i class="fa fa-spinner fa-spin fa-fw"></i></h3>
+</div>
+</div>
+</div>
+<div class=col-md-4>
+<div class="panel panel-primary">
+<div class="panel-heading uppercase"><i class="fa fa-group fa-2x"></i>&nbsp;&nbsp;&nbsp;&nbsp;Anzahl der Team-Mitglieder:</div>
+<div class="panel-body text-center">
+<h3 id=countedTeam><i class="fa fa-spinner fa-spin fa-fw"></i></h3>
+</div>
+</div>
+</div>
+<div class=col-md-4>
+<div class="panel panel-primary">
+<div class="panel-heading uppercase"><i class="fa fa-line-chart fa-2x"></i>&nbsp;&nbsp;&nbsp;&nbsp;Unsere Website-Aufrufe:</div>
+<div class="panel-body text-center">
+<h3 id=WebsiteViews><i class="fa fa-spinner fa-spin fa-fw"></i></h3>
+</div>
+</div>
+</div>
+</div>
+<div class=row>
+<div class=col-md-6>
+<h4 class=uppercase><i class="fa fa-pie-chart"></i>&nbsp;&nbsp;TOP-10 STATISTIKEN</h4>
+</div>
+</div>
+<div class=row>
+<div class=col-md-6>
+<div class="panel panel-default">
+<div class="panel-heading qsg text-center uppercase">QUICK-SURVIVALGAMES</div>
+<div class=panel-body>
+<div class=text-center id=QSGLoader>
+<h3><i class="fa fa-spinner fa-spin fa-fw"></i></h3>
+</div>
+<p class="text-center errorMessage" id="QSGErrorMessage" style="display: none;">Statistiken konnten nicht abgerufen werden!</p>
+<table class="table table-hover text-justify" id=QSGTable style=display:none>
+<thead>
+<tr>
+<th class=text-center>Platz:</th>
+<th></th>
+<th>Spieler:</th>
+</tr>
+</thead>
+<tbody id=QSGBody>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class=col-md-6>
+<div class="panel panel-default">
+<div class="panel-heading skywars text-center">SkyWars</div>
+<div class=panel-body>
+<div class=text-center id=SkyWarsLoader>
+<h3><i class="fa fa-spinner fa-spin fa-fw"></i></h3>
+</div>
+<p class="text-center errorMessage" id="SkyWarsErrorMessage" style="display: none;">Statistiken konnten nicht abgerufen werden!</p>
+<table class="table table-hover text-justify" id=SkyWarsTable style=display:none>
+<thead>
+<tr>
+<th class=text-center>Platz:</th>
+<th></th>
+<th>Spieler:</th>
+</tr>
+</thead>
+<tbody id=SkyWarsBody>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id=footer>
+<div class=container>
+<div class=row>
+  <div class="col-md-4 col-sm-6 col-md-xs-12 paddingtop-bottom">
+  <h4><i class="fa fa-location-arrow"></i>&nbsp;&nbsp;QUICK NAVIGATION</h4>
+  <ul class=footer-ul>
+  <li><a href=index.html> Startseite</a></li>
+  <li><a target=_blank href=http://bullz.net/forum> Forum</a></li>
+  <li><a href=statistics.html> Statistiken</a></li>
+  <li><a href=team.html> Team</a></li>
+  <li><a href=partners.html> Partner</a></li>
+  <li><a href=impressum.php> Impressum</a></li>
+  <li><a href=datenschutzerklärung.php> Datenschutzerklärung</a></li>
+  </ul>
+  </div>
+  <div class="col-md-6 col-sm-6 col-md-xs-12 col-md-offset-2">
+  <h4 class=text-center>➥ Aktuelle Tweets von <a href=https://twitter.com/BullzNET>@BullzNET</a></h4>
+  <a class=twitter-timeline data-theme=dark data-height=290 data-chrome="nofooter noheader transparent noborders noscrollbar" data-dnt=true href=https://twitter.com/BullzNET>Tweets by BullzNET</a>
+  </div>
+
+</div>
+</div>
+</section>
+<div class=copyright>
+<div class=container>
+<div class=col-md-6>
+<p>Copyright © 2017 Bullz.net - Website developed by <a href=https://technikclou.com>Johannes Lohmann</a></p>
+</div>
+<div class=col-md-6>
+</div>
+</div>
+</div>
+</body>
+<script src=https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js></script>
+<script src=assets/js/bootstrap.min.js></script>
+<script src=assets/js/particles.min.js></script>
+<script src=assets/js/smooth-scroll.min.js></script>
+<script src=assets/js/wow.min.js></script>
+<script src=https://platform.twitter.com/widgets.js></script>
+<script>function locationHashChanged() {
+    player = window.location.hash.replace("#", "");
+    $("#player-input").val(player);
+    statistics(player);
+    smoothScroll.animateScroll(document.querySelector("#particles-js"))
+}
+"onhashchange" in window ? (window.location.hash && locationHashChanged(), window.onhashchange = locationHashChanged) : ($("#search-form").css({
+    display: "none"
+}), $("#errorMessage").text("Dein Browser oder deine Browserversion wird nicht unterst\u00fctzt."));
+$("#player-input").change(function() {
+    player = $("#player-input").val();
+    window.location.hash = "#" + player
+});
+
+function statistics(a) {
+    a && ($("#player-search-button").html('<i class="fa fa-spinner fa-spin fa-fw"></i>'), $.getJSON("https://api.rexori.technikclou.com/api/v1/profile/" + a, function(c) {
+        if (c) {
+            if (c.status) {
+                $("#errorMessage").text("");
+                $("#title").html(`
+                  <h2>
+                    <img src="https://visage.surgeplay.com/full/100/` + c.data.uuid + `" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span  style="color:` + c.data.rank.color + `">` + c.data.name + `</span>
+                  </h2>
+                  <h5>
+                    <label class="label label-default" style="background-color: ` + c.data.rank.color + `;">` + c.data.rank.name + `</label>
+                    <label rel="tooltip" title="` + (c.data.ts3.currentChannel ? `Channel: ` + c.data.ts3.currentChannel : ``) + `" class="label" style="background-color: ` + (c.data.ts3.status ? `#5cb85c` : `#b00000`) + `;">` + (c.data.ts3.status ? `Online` : `Offline`) + ` auf TeamSpeak</label>
+                    <label class="label label-default">` + (c.data.cookies ? c.data.cookies : `0`) + ` Cookies</label>
+                      ` + (c.data.friends.countedFriends ? `
+                        ` + (c.data.friends.friends ? `<a data-toggle="collapse" href="#friends">` : ``) + `
+                        <span class="label label-default">
+                        ` + c.data.friends.countedFriends + ` Freund` + (1 == c.data.friends.countedFriends ? `` : `e`) + ` ` + (c.data.friends.friends ? `<span class="caret"></span>` : ``) + `
+                        </span>
+                        ` + (c.data.friends.friends ? `</a>` : ``) + `
+                    ` : `
+                      <label class="label label-default">0 Freunde</label>`) + `
+                  </h5>`);
+
+                $("#player-stats").html(`
+                <div id="friends" class="panel-collapse collapse">
+                  <br />
+                  <h5>Freunde von ` + c.data.name + `:</h5>
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Avatar:</th>
+                        <th class="text-justify">Spielername:</th>
+                        <th class="text-justify">Rang:</th>
+                      </tr>
+                      </thead>
+                      <tbody id="friends-tr">
+                      </tbody>
+                  </table>
+                </div>`);
+
+                if(c.data.friends.friends) {
+                  for (var g, f = 0; f < c.data.friends.friends.length; f++) {
+                      g = g + `<tr  class="wow flipInX">
+                                <td class="text-center">
+                                  <a href="./statistics.html#` + c.data.friends.friends[f].name + `">
+                                  <img class="avatar" src="https://cravatar.eu/avatar/` + c.data.friends.friends[f].name + `" />
+                                 </a>
+                                </td>
+                                <td class="text-justify">
+                                  <a href="./statistics.html#` + c.data.friends.friends[f].name + `">
+                                    ` + c.data.friends.friends[f].name + `
+                                  </a>
+                                </td>
+                                <td class="text-justify">
+                                  <h5>
+                                    <label class="label label-default" style="background-color: ` + c.data.friends.friends[f].rank.color + `;">
+                                      ` + (c.data.friends.friends[f].rank.name ? c.data.friends.friends[f].rank.name : `Spieler`) + `
+                                    </label>
+                                  </h5>
+                                </td>
+                              </tr>`;
+                  }
+                }
+
+                $.getJSON("https://api.rexori.technikclou.com/api/v1/stats/" + a, function(b) {
+                    b && b.status && $("#player-stats").append('\n                              <div class="col-md-6">\n                                <div class="panel panel-default">\n                                  <div class="panel-heading qsg text-center">QUICK-SURVIVALGAMES</div>\n                                  <div class="panel-body">\n                                  ' + (b.data.QSGStats ? '\n                                    <table class="table table-hover">\n                                      <tbody>\n                                        <tr class="text-center wow flipInX">\n                                          <td class="user-stats"><i class="fa fa-diamond" aria-hidden="true"></i>  Punkte</td>\n                                          <td style="text-align: justify;" class="user-stats">' + (b.data.QSGStats.COINS ? b.data.QSGStats.COINS : "0") + '</td>\n                                        </tr>\n                                        <tr class="text-center wow flipInX">\n                                          <td class="user-stats"><i class="fa fa-clock-o" aria-hidden="true"></i>  Gesamte Spiele</td>\n                                          <td style="text-align: justify;" class="user-stats">' + (b.data.QSGStats.GAMES ? b.data.QSGStats.GAMES : "0") + '</td>\n                                        </tr>\n                                        <tr class="text-center wow flipInX">\n                                          <td class="user-stats"><i aria-hidden="true" class="fa fa-bullseye"></i>  Kills</td>\n                                          <td style="text-align: justify;" class="user-stats">' + (b.data.QSGStats.KILLS ? b.data.QSGStats.KILLS : "0") + '</td>\n                                        </tr>\n                                        <tr class="text-center wow flipInX">\n                                          <td class="user-stats"><i aria-hidden="true" class="fa fa-times"></i>  Deaths</td>\n                                          <td style="text-align: justify;" class="user-stats">' + (b.data.QSGStats.DEATHS ? b.data.QSGStats.DEATHS : "0") + '</td>\n                                        </tr>\n                                        <tr class="text-center wow flipInX">\n                                          <td class="user-stats"><i aria-hidden="true" class="fa fa-pie-chart"></i>  K/D</td>\n                                          <td style="text-align: justify;" class="user-stats">' + (b.data.QSGStats.KILLS / b.data.QSGStats.DEATHS ? Math.round(b.data.QSGStats.KILLS / b.data.QSGStats.DEATHS * 100) / 100 : "0") + '</td>\n                                        </tr>\n                                        <tr class="text-center wow flipInX">\n                                          <td class="user-stats"><i aria-hidden="true" class="fa fa-check"></i>  Gewonnene Runden</td>\n                                          <td style="text-align: justify;" class="user-stats">' + (b.data.QSGStats.WINS ? b.data.QSGStats.WINS : "0") + '</td>\n                                        </tr>\n                                        <tr class="text-center wow flipInX">\n                                          <td class="user-stats"><i aria-hidden="true" class="fa fa-bolt"></i>  Deathmatch Runden</td>\n                                          <td style="text-align: justify;" class="user-stats">' + (b.data.QSGStats.GAMES ? b.data.QSGStats.GAMES : "0") + "</td>\n                                        </tr>\n                                      </tbody>\n                                    </table>\n                                  " : '\n                                  <p class="text-center errorMessage">\n                                    Es liegen keine Statistiken zu dem Spieler vor.\n                                  </p>\n                                  ') + '\n\n                                  </div>\n                                </div>\n                              </div>\n                              <div class="col-md-6">\n                                <div class="panel panel-default">\n                                  <div class="panel-heading skywars text-center">SkyWars</div>\n                                  <div class="panel-body">\n                                  ' + (b.data.SkyWarsStats ? '\n\n                                    <table class="table table-hover">\n                                      <tbody>\n                                      <tr class="text-center wow flipInX">\n                                        <td class="user-stats"><i class="fa fa-diamond" aria-hidden="true"></i>  Punkte</td>\n                                        <td style="text-align: justify;" class="user-stats">' + (b.data.SkyWarsStats.Punkte ? b.data.SkyWarsStats.Punkte : "0") + '</td>\n                                      </tr>\n                                      <tr class="text-center wow flipInX">\n                                        <td class="user-stats"><i class="fa fa-clock-o" aria-hidden="true"></i>  Gesamte Spiele</td>\n                                        <td style="text-align: justify;" class="user-stats">' + (b.data.SkyWarsStats.GespielteSpiele ? b.data.SkyWarsStats.GespielteSpiele : "0") + '</td>\n                                      </tr>\n                                      <tr class="text-center wow flipInX">\n                                        <td class="user-stats"><i aria-hidden="true" class="fa fa-bullseye"></i>  Kills</td>\n                                        <td style="text-align: justify;" class="user-stats">' + (b.data.SkyWarsStats.Kills ? b.data.SkyWarsStats.Kills : "0") + '</td>\n                                      </tr>\n                                      <tr class="text-center wow flipInX">\n                                        <td class="user-stats"><i aria-hidden="true" class="fa fa-times"></i>  Deaths</td>\n                                        <td style="text-align: justify;" class="user-stats">' + (b.data.SkyWarsStats.Deaths ? b.data.SkyWarsStats.Deaths : "0") + '</td>\n                                      </tr>\n                                      <tr class="text-center wow flipInX">\n                                        <td class="user-stats"><i aria-hidden="true" class="fa fa-pie-chart"></i>  K/D</td>\n                                        <td style="text-align: justify;" class="user-stats">' + (b.data.SkyWarsStats.Kills / b.data.SkyWarsStats.Deaths ? Math.round(b.data.SkyWarsStats.Kills / b.data.SkyWarsStats.Deaths * 100) / 100 : "0") + '</td>\n                                      </tr>\n                                      <tr class="text-center wow flipInX">\n                                        <td class="user-stats"><i aria-hidden="true" class="fa fa-check"></i>  Gewonnene Runden</td>\n                                        <td style="text-align: justify;" class="user-stats">' + (b.data.SkyWarsStats.GewonneneSpiele ? b.data.SkyWarsStats.GewonneneSpiele : "0") + "</td>\n                                      </tr>\n                                      </tbody>\n                                    </table>\n\n                                    " : '\n                                    <p class="text-center errorMessage">\n                                      Es liegen keine Statistiken zu dem Spieler vor.\n                                    </p>\n                                    ') + "\n\n                                  </div>\n                                </div>\n                              </div>\n                              ")
+                });
+                $("#friends-tr").html(g);
+                $("#player-stats").css({
+                    display: "block"
+                });
+                $("#title2").css({
+                    display: "block"
+                });
+                $("#player-search-button").html("Suchen")
+            } else {
+                $("#title").html("<h2>&nbsp;&nbsp;Statistiken</h2>"), $("#title2").css({
+                    display: "none"
+                }), $("#player-stats").css({
+                    display: "none"
+                }), $("#player-search-button").html("Suchen"), $("#errorMessage").text("Spieler nicht gefunden!")
+            }
+        } else {
+            $("#title").html("<h2>Globale Statistiken</h2>"), $("#title2").css({
+                display: "none"
+            }), $("#player-stats").css({
+                display: "none"
+            }), $("#player-search-button").html("Suchen"), $("#errorMessage").text("Es ist ein Fehler aufgetreten!")
+        }
+    }))
+}
+$.getJSON("https://api.rexori.technikclou.com/api/v1/global-stats/global", function(a) {
+    a.status ? ($("#countedUsers").text(a.data.countedUsers), $("#countedTeam").text(a.data.countedTeam), $("#WebsiteViews").text(a.data.WebsiteViews)) : $("#errorMessage").text("Statistiken konnten nicht abgerufen werden!")
+});
+$.getJSON("https://api.rexori.technikclou.com/api/v1/global-stats/qsg", function(f) {
+    if (f.status && f.data.QSGStats) {
+        for (var a, e = 0; e < f.data.QSGStats.length; e++) {
+            a = a + '<tr><td class="text-center" scope="row">' + (e + 1) + '</td><td class="text-center wow flipInX"><a href="./statistics.html#' + f.data.QSGStats[e].Name + '"><img class="img-responsive avatar" src="https://cravatar.eu/avatar/' + f.data.QSGStats[e].Name + '" /></a></td><td class="wow flipInX"><a href="./statistics.html#' + f.data.QSGStats[e].Name + '">' + f.data.QSGStats[e].Name + "</a></td></tr>"
+        }
+        $("#QSGLoader").css({
+            display: "none"
+        });
+        $("#QSGTable").css({
+            display: "inline-table"
+        });
+        $("#QSGBody").html(a)
+    } else {
+      $("#QSGLoader").css({
+          display: "none"
+      });
+      $("#QSGErrorMessage").css({
+          display: "block"
+      });
+    }
+});
+$.getJSON("https://api.rexori.technikclou.com/api/v1/global-stats/skywars", function(f) {
+    if (f.status && f.data.SkyWarsStats) {
+        for (var a, e = 0; e < f.data.SkyWarsStats.length; e++) {
+            a = a + '<tr><td class="text-center" scope="row">' + (e + 1) + '</td><td class="text-center wow flipInX"><a href="./statistics.html#' + f.data.SkyWarsStats[e].Name + '"><img class="img-responsive avatar" src="https://cravatar.eu/avatar/' + f.data.SkyWarsStats[e].Name + '" /></a></td><td class="wow flipInX"><a href="./statistics.html#' + f.data.SkyWarsStats[e].Name + '">' + f.data.SkyWarsStats[e].Name + "</a></td></tr>"
+        }
+        $("#SkyWarsLoader").css({
+            display: "none"
+        });
+        $("#SkyWarsTable").css({
+            display: "inline-table"
+        });
+        $("#SkyWarsBody").html(a)
+    } else {
+      $("#SkyWarsLoader").css({
+          display: "none"
+      });
+      $("#SkyWarsErrorMessage").css({
+          display: "block"
+      });
+    }
+});
+$.getJSON("https://api.rexori.technikclou.com/api/v1/addView");
+(new WOW).init();
+
+function checkScroll() {
+    var b = 2 * $(".navbar").height();
+    $(window).scrollTop() > b ? ($(".navbar").removeClass("navbar-transparent"), $("#navbar").removeClass("underline"), $("#nav-logo").addClass("animated fadeInDown"), $("#nav-logo").removeClass("fadeOutUp")) : ($(".navbar").addClass("navbar-transparent"), $("#navbar").addClass("underline"), $("#nav-logo").addClass("animated fadeOutUp"), $("#nav-logo").removeClass("fadeInDown"))
+}
+smoothScroll.init({
+    speed: 2000
+});
+particlesJS.load("particles-js", "assets/particles.json", function() {
+    console.log("callback - particles.js config loaded")
+});
+0 < $(".navbar").length && $(window).on("scroll load resize", function() {
+    checkScroll()
+});
+$(window).on("load", function() {
+    $("#status").fadeOut();
+    $("#preloader").delay(350).fadeOut("slow");
+    $("body").delay(350).css({
+        overflow: "visible"
+    });
+    $(".navbar").delay(350).css({
+        visibility: "visible"
+    })
+});
+$(".navbar-collapse").on("shown.bs.collapse", function() {
+    $(".hero").addClass("blur")
+});
+$(".navbar-collapse").on("hidden.bs.collapse", function() {
+    $(".hero").removeClass("blur")
+});
+$('body').tooltip({
+selector: '[rel=tooltip]'
+});</script>
+</html>
+
