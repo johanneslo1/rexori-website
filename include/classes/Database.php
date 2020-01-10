@@ -3,13 +3,13 @@
 class Database
   {
 
-    private $host = '5.231.197.130';
+    private $host = '8.8.8.8';
 
     private $dbname = array('BullzNET_Website');
 
-    private $user = 'johannes';
+    private $user = 'user';
 
-    private $password = '4BABsDKq2Gn8YEWcRnctLTyGGGe8THe3';
+    private $password = 'password';
 
 
       /**
